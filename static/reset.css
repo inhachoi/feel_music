@@ -62,5 +62,5 @@ button {
 img {
     width: 100%;
 }
-a {display: inline-block; color: #fff; text-decoration: none; outline: none} 
-a:hover, a:active {text-decoration: none; color:#fff; background-color:#f59000;}
+a {display: inline-block; color: #222; text-decoration: none; outline: none;}
+a:hover, a:active {text-decoration: none; background-color:none;}
