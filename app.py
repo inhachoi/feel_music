@@ -51,6 +51,11 @@ def music():
     song_list = Song.query.all()
     return render_template('music.html', data=song_list)
 
+@app.route("/music_detail/")
+def music_detail():
+    song_list = Song.query.all()
+    return render_template('music_detail.html', data=song_list)
+
 
 # @app.route("/music/<username>/")
 # def render_music_filter(username):
