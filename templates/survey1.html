@@ -1,106 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>감정 딴따라</title>
+    <title>감정 딴따라 | 현재 당신의 감정은?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-
-            background-color: #E2E2E2;
-            color: black;
-
-            padding-bottom: 100px;
-        }
-        body>h1 {
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        body>h1>span {
-            color: orange;
-        }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-            padding: 20px 0;
-        }
-
-        .footer>h2>span {
-            color: orange;
-        }
-
-        .footer>p {
-            color:gray;
-        }
-
-        .btn {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            width: 400px;
-            height: 50px;
-            margin: 30px;
-        }
-
-
-
-        
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-</head>
-
-<body>
-    <h1>"현재 당신의 <span>감정</span>을 선택해 주세요."</h1>
-    <form action="">
-        <a href="{{ url_for('survey2')}}" class="btn btn-dark">행복</a>
-        <a href="{{ url_for('survey2')}}" class="btn btn-dark">슬픔</a>
-        <a href="{{ url_for('survey2')}}" class="btn btn-dark">분노</a>
-    </form>
-
-
-    <div class="footer">
-        <h2>감정<br><span>딴</span>따라</h2><br>
-        <p>music that you listen to according to your feelings</p>
+    <div id="wrap">
+        <!-- 설문조사 step1 -->
+        <div class="survey-wrap">
+            <h2 class="tit">"현재 당신의 <span class="point-color">감정</span>을 선택해주세요."</h2>
+            <div class="select-btn btn-wrap">
+                <a href="{{ url_for('survey2')}}" class="btn bg-bk wide">슬픔</a>
+                <a href="{{ url_for('survey2')}}" class="btn bg-bk wide">행복</a>
+                <a href="{{ url_for('survey2')}}" class="btn bg-bk wide">분노</a>
+            </div>
+        </div>
+        <!-- 푸터영역 -->
+        <div class="footer">
+            <div class="logo"><p>감정</p><p><span class="point-color">딴</span>따라</p></div>
+            <p class="copy">music that you listen to according to your feelings</p>
+        </div>
     </div>
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
 </body>
 </html>

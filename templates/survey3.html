@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감정 딴따라 | 현재 당신의 감정은?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="wrap">
+        <!-- 설문조사 step2 -->
+        <div class="survey-wrap step3">
+            <h2 class="tit">"나의 <span class="emotion"><span class="point-color">우울</span>한</span> 감정은?!"</h2>
+            <div class="select-btn">
+                <a href="{{ url_for('music')}}" class="btn">결별</a>
+                <a href="{{ url_for('music')}}" class="btn">실패</a>
+                <a href="{{ url_for('music')}}" class="btn">권고사직</a>
+                <a href="{{ url_for('music')}}" class="btn">비도 오고 그래서...?</a>
+                <a href="{{ url_for('music')}}" class="btn">무기력</a>
+                <a href="{{ url_for('music')}}" class="btn">파산</a>
+                <a href="{{ url_for('music')}}" class="btn">몸무게 상승</a>
+                <a href="{{ url_for('music')}}" class="btn">지인 또는 반려견의 죽음</a>
+            </div>
+        </div>
+        <!-- 푸터영역 -->
+        <div class="footer">
+            <div class="logo"><p>감정</p><p><span class="point-color">딴</span>따라</p></div>
+            <p class="copy">music that you listen to according to your feelings</p>
+        </div>
+    </div>
+</body>
+</html>

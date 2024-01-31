@@ -42,6 +42,10 @@ def survey1():
 def survey2():
     return render_template('survey2.html')
 
+@app.route("/seuvey3/")
+def survey3():
+    return render_template('survey3.html')
+
 @app.route("/music/")
 def music():
     song_list = Song.query.all()

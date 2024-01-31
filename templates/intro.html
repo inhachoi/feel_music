@@ -1,107 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>감정 딴따라</title>
+    <title>감정 딴따라 | Landing Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-            * {
-                font-family: 'Poppins', sans-serif;
-            }
-
-            body {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                text-align: center;
-
-                background-color: #E2E2E2;
-                color: black;
-
-                padding-bottom: 100px;
-            }
-
-            body>h1 {
-                font-weight: bold;
-                margin-bottom: 30px;
-            }
-
-            body>h1>span {
-                color: orange;
-            }
-
-            .footer {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                text-align: center;
-                font-weight: bold;
-                padding: 20px 0;
-            }
-
-            .footer>p {
-                color: gray;
-            }
-
-            .btn {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                width: 200px;
-                height: 50px;
-                margin: 30px;
-            }
-
-            svg {
-                width: 200px;
-                height: 200px;
-            }
-        </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    </head>
-
-    <body>
-        <h1>감정<br><span>딴</span>따라</h1><br>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cassette-fill"
-            viewBox="0 0 16 16">
-            <path
-                d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h.191l1.862-3.724A.5.5 0 0 1 4 10h8a.5.5 0 0 1 .447.276L14.31 14h.191a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zM4 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2m8 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2M6 6a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H7a1 1 0 0 1-1-1" />
-            <path d="m13.191 14-1.5-3H4.309l-1.5 3z" />
-        </svg>
-        <a href="{{ url_for('survey1')}}" class="btn btn-dark">플레이</a>
-
-        <div class="footer">
-            <p>music that you listen to according to your feelings</p>
+    <div id="wrap">
+        <!-- 랜딩페이지 -->
+        <div class="landing">
+            <div class="page-title">
+                <div class="logo"><p>감정</p><p><span class="point-color">딴</span>따라</p></div>
+                <p>지금 당신의 <span>감정</span>은 어떠신가요?</p>
+            </div>
+            <article class="article-img">
+                <img src="{{ url_for('static', filename='tape.png') }}" alt="꾸밈요소 이미지입니다.">
+            </article>
+            <div class="btn-wrap">
+                <a href="{{ url_for('survey1')}}" class="play-btn bg-bk mid">플레이</a>
+            </div>
         </div>
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-            crossorigin="anonymous"></script>
-    </body>
-
-    </html>
+        <!-- 푸터영역 -->
+        <div class="footer">
+            <p class="copy">music that you listen to according to your feelings</p>
+        </div>
+    </div>
 </body>
-
 </html>
