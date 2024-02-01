@@ -57,7 +57,7 @@
                                 <p class="artist">{{song.artist}}</p>
                                 <p class="func">
                                     
-                                    <span class="chat">{{ filter_chat }}</span>
+                                    <span class="chat">{{ get_comment_count(song.id) }}</span>
                                     <span class="like">{{ song.count }}</span>
                                 </p>
                             </div>

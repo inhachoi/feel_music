@@ -67,12 +67,17 @@ def survey3():
     return render_template('survey3.html')
 
 
+def get_comment_count(song_id):
+    return Review.query.filter_by(song_id=song_id).count()
+
 @app.route("/music/")
 def music():
     song_list = Song.query.all()
     # 아직 수정 중
-    feel_list = Feel.query.all()
-    return render_template('music.html', data=song_list, data2=feel_list)
+    song_id = request.args.get('song_id')
+    
+    
+    return render_template('music.html', data=song_list, get_comment_count=get_comment_count)
 
 
 @app.route("/music/detail")
