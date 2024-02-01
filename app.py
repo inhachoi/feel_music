@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =\
 
 db = SQLAlchemy(app)
 
+
 class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     artist = db.Column(db.String(100), nullable=False)
@@ -27,18 +28,19 @@ class Song(db.Model):
     category = db.Column(db.String(100), nullable=False)
     count = db.Column(db.Integer, nullable=False)
 
+
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     song_id = db.Column(db.Integer, db.ForeignKey('song.id'), nullable=False)
     review_content = db.Column(db.String(200), nullable=False)
     date = db.Column(db.String(200), nullable=False)
-    
+
+
 class Feel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     feeling = db.Column(db.String(100), nullable=False)
     feeling_detail = db.Column(db.String(100), nullable=False)
     feeling_detail_cnt = db.Column(db.Integer, nullable=False)
-    
 
 
 with app.app_context():
@@ -49,13 +51,16 @@ with app.app_context():
 def home():
     return render_template('intro.html')
 
+
 @app.route("/survey1/")
 def survey1():
     return render_template('survey1.html')
 
+
 @app.route("/survey2/")
 def survey2():
     return render_template('survey2.html')
+
 
 @app.route("/survey3/")
 def survey3():
@@ -95,7 +100,7 @@ def review_create():
         review_content = request.form.get('review_content')
         if review_content:
             new_review = Review(
-                song_id=song_id, review_content=review_content, date=datetime.datetime.now())
+                song_id=song_id, review_content=review_content, date=datetime.datetime.now().strftime('%Y-%m-%d'))
             db.session.add(new_review)
             db.session.commit()
 
