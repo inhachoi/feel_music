@@ -17,7 +17,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] =\
 
 db = SQLAlchemy(app)
 
-
 class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     artist = db.Column(db.String(100), nullable=False)
@@ -28,12 +27,18 @@ class Song(db.Model):
     category = db.Column(db.String(100), nullable=False)
     count = db.Column(db.Integer, nullable=False)
 
-
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     song_id = db.Column(db.Integer, db.ForeignKey('song.id'), nullable=False)
     review_content = db.Column(db.String(200), nullable=False)
     date = db.Column(db.String(200), nullable=False)
+    
+class Feel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    feeling = db.Column(db.String(100), nullable=False)
+    feeling_detail = db.Column(db.String(100), nullable=False)
+    feeling_detail_cnt = db.Column(db.Integer, nullable=False)
+    
 
 
 with app.app_context():
@@ -60,11 +65,13 @@ def survey3():
 @app.route("/music/")
 def music():
     song_list = Song.query.all()
-    return render_template('music.html', data=song_list)
+    # 아직 수정 중
+    feel_list = Feel.query.all()
+    return render_template('music.html', data=song_list, data2=feel_list)
 
 
 @app.route("/music/detail")
-def music_review():
+def music_detail():
     song_id = request.args.get('song_id')
     # Song 테이블에서 title,artist,앨범 커버, 음원 가져오기
     song_info = Song.query.filter_by(id=song_id).all()
