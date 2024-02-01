@@ -1,57 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>감정 딴따라 | 현재 당신의 감정은?</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <div id="wrap">
-        <div class="inner-wrap">
-            <!-- header -->
-            <header class="header">
-                <div class="logo"><p>감정<span class="point-color">딴</span>따라</p></div>
-                <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='home.svg') }}" alt=""></a>
-            </header>
-            <!-- 음악 추천 리스트 -->
-            <div class="recommend-music">
-                <div class="tit-wrap">
-                    <p class="recheck-btn"><a href="{{ url_for('home')}}">감정 다시 체크하기</a></p>
-                    <h2><span class="point-color">우울</span>한 당신을 위한<br>
-                        음악추천 리스트입니다.</h2>
+      <div class="inner-wrap">
+        <!-- header -->
+        <header class="header">
+          <div class="logo">
+            <p>감정<span class="point-color">딴</span>따라</p>
+          </div>
+          <a href="{{ url_for('home')}}"
+            ><img src="{{ url_for('static', filename='home.svg') }}" alt=""
+          /></a>
+        </header>
+        <!-- 음악 추천 리스트 -->
+        <div class="recommend-music">
+          <div class="tit-wrap">
+            <p class="recheck-btn">
+              <a href="{{ url_for('home')}}">감정 다시 체크하기</a>
+            </p>
+            <h2>
+              <span class="point-color">우울</span>한 당신을 위한<br />
+              음악추천 리스트입니다.
+            </h2>
+          </div>
+          <div class="music-list">
+            <p class="status">
+              현재 <span class="num">18</span>명이
+              <span class="emotion point-color">결별</span>로 같은 감정을
+              느껴요!
+            </p>
+            <ul>
+              {% for song in data %}
+              <li>
+                <div class="cover">
+                  <form
+                    action="{{url_for('music_review' , song_id = song.id) }}"
+                    method="GET"
+                  >
+                    <input type="hidden" name="song_id" value="{{song.id}}" />
+                    <button type="submit" class="button-class">
+                      <img src="{{song.image_url}}" alt="앨범이미지" />
+                    </button>
+                  </form>
                 </div>
-                <div class="music-list"> 
-                    <p class="status">현재 <span class="num">18</span>명이 <span class="emotion point-color">결별</span>로 같은 감정을 느껴요!</p>          
-                    <ul>
-                        {% for song in data %}
-                        <li>
-                            <a href="#none">
-                                <div class="cover">
-                                    <img src="{{song.image_url}}" alt="앨범이미지">
-                                </div>
-                                <div class="info">
-                                    <p class="title">{{song.title}}</p>
-                                    <p class="artist">{{song.artist}}</p>
-                                    <p class="func">
-                                        <span class="chat">20</span>
-                                        <span class="like">293</span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        {% endfor %}
-                       
-                    </ul>
+                <div class="info">
+                  <p class="title">{{song.title}}</p>
+                  <p class="artist">{{song.artist}}</p>
+                  <p class="func">
+                    <span class="chat">20</span>
+                    <span class="like">293</span>
+                  </p>
                 </div>
-            </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-        
-        <div class="footer">
-            <div class="logo"><p>감정</p><p><span class="point-color">딴</span>따라</p></div>
-            <p class="copy">music that you listen to according to your feelings</p>
+      </div>
+
+      <div class="footer">
+        <div class="logo">
+          <p>감정</p>
+          <p><span class="point-color">딴</span>따라</p>
         </div>
+        <p class="copy">music that you listen to according to your feelings</p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
