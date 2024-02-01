@@ -70,13 +70,13 @@ def survey3():
 def get_comment_count(song_id):
     return Review.query.filter_by(song_id=song_id).count()
 
+
 @app.route("/music/")
 def music():
     song_list = Song.query.all()
     # 아직 수정 중
     song_id = request.args.get('song_id')
-    
-    
+
     return render_template('music.html', data=song_list, get_comment_count=get_comment_count)
 
 
@@ -91,6 +91,19 @@ def music_detail():
 
     return render_template('music_detail.html', song=song_info, review=reviews)
 
+# 음악 좋아요 증가 함수
+
+
+@app.route("/like/", methods=['POST'])
+def like():
+    # 좋아요 수 증가
+    song_id = request.args.get('song_id')
+    song = Song.query.get(song_id)
+    song.count += 1
+    db.session.commit()
+
+    # 리다이렉션
+    return redirect(url_for('music_detail', song_id=song_id))
 
 # post 메소드로 리뷰 작성
 

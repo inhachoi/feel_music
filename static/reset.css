@@ -30,6 +30,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -64,3 +65,4 @@ img {
 }
 a {display: inline-block; color: #222; text-decoration: none; outline: none;}
 a:hover, a:active {text-decoration: none; background-color:none;}
+input:focus, input:active {border: none; outline: none; background: transparent;}

@@ -253,10 +253,203 @@
     content: '';
     display: inline-block;
     background: url('../static/like.svg')no-repeat center 100%;
+    background-size: 20px;
     width: 20px;
     height: 20px;
     margin: 0 0 -3px 2px;
 }
+
+/* 상세페이지 */
+.music-detail .music-wrap {
+    display: flex;
+    gap: 0 40px;
+  }
+  .music-detail .music-wrap > div {
+    flex: 1;
+  }
+  .music-detail .album-cover {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 372px;
+    font-size: 0;
+  }
+  .music-detail .album-cover .play-btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 372px;
+    z-index: 8;
+  }
+  .music-detail .album-cover .play-btn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+    background: url('../static/play.svg')no-repeat center 100%;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+  }
+  .music-detail .album-cover .play-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color: rgba(0,0,0,0);
+    transition: all .2s ease-in-out;
+  }
+  .music-detail .album-cover .play-btn:hover::before {
+    opacity: 1;
+  }
+  .music-detail .album-cover .play-btn:hover::after {
+    background-color: rgba(0,0,0,.2);
+  }
+  .music-detail .status {
+    color: #999;
+    font-size: 16px;
+  }
+  .music-detail .tag-list {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+    margin-top: 10px;
+  }
+  .music-detail .tag-list li {
+    padding: 8px 10px;
+    background: #eee;
+    color: #999;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  .music-detail .album-info {
+    margin-top: 40px;
+  }
+  .music-detail .album-info .title {
+    font-size: 30px;
+    font-weight: 500;
+    color: #222;
+  }
+  .music-detail .album-info .dis-flx {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .music-detail .album-info .artist {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #999;
+  }
+  .music-detail .album-info .like {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #999;
+    text-align: right;
+    padding-right: 15px;
+  }
+  .music-detail .album-info .like button:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -7px;
+  display: inline-block;
+  background: url('../static/like.svg')no-repeat center 100%;
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  margin: 0 0 -3px 2px;
+}
+  .music-detail .info-cont {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #888;
+    font-size: 16px;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+  .comment-wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 40px;
+    margin-top: 80px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }
+  .comment-wrap .tit {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .comment-wrap .input-form {
+    position: relative;
+    width: 100%;
+    margin-top: 60px;
+  }
+  .comment-wrap .input-form input {
+    padding: 9px 50px 10px 8px;
+    background: #fff;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  .comment-wrap .input-form input::placeholder {
+    color: #ddd;
+  }
+  .comment-wrap .input-form button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .comment-wrap form {
+    flex: 1;
+  }
+  .comment-list-wrap {
+    height: 200px;
+    padding-right: 15px;
+    overflow-y: scroll;
+  }
+  .comment-list-wrap::-webkit-scrollbar {
+    width: 5px;
+    background-color: #eee;
+  }
+  .comment-list-wrap::-webkit-scrollbar-thumb {
+    background: #999;
+  }
+  .comment-list-wrap .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    flex: 1;
+  }
+  .comment-list-wrap .item .date {
+    color: #999;
+  }
+  .comment-list-wrap .item ~ .item {
+    margin-top: 15px;
+  }
+
 /* animation */
 @keyframes slideUp {
     0% {
@@ -290,10 +483,23 @@
         grid-template-columns: repeat(4, minmax(100px, 1fr));
         gap: 40px 10px;
     }
+    .comment-wrap {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+    .comment-wrap .input-form {
+        margin-top: 40px;
+    }
 }
 @media(max-width: 600px) {
     .recommend-music .music-list ul {
         grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+    .music-detail .music-wrap {
+        flex-direction: column;
+    }
+    .music-detail .music-wrap .music-info {
+        margin-top: 40px;
     }
 }
 @media(max-width: 450px) {

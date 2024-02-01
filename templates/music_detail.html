@@ -14,17 +14,7 @@
     />
   </head>
   <style>
-    .music-detail {
-      display: flex;
-      gap: 0 20px;
-    }
-    .music-detail .left {
-      width: 100%;
-      max-width: 372px;
-    }
-    .music-detail .album-cover a {
-      width: 100%;
-    }
+    
     
   </style>
   <body>
@@ -43,53 +33,56 @@
         <div class="music-detail">
           <!-- 음악정보 -->
           {% for song in song %}
-          <div class="left">
+          <div class="music-wrap">
             <div class="album-cover">
-              <a href="{{song.video_url}}" class="play-btn">
+              <a href="{{song.video_url}}" class="play-btn"></a>
                 <img src="{{song.image_url}}" alt="앨범커버">
-              </a>
+            </div>
+            <div class="music-info">
+              <article class="article-wrap">
+                <p class="status">
+                  현재 <span class="num">18</span>명이
+                  <span class="emotion point-color">결별</span>로 같은 감정을
+                  느껴요!
+                </p>
+                <ul class="tag-list">
+                  <li>슬픔</li>
+                  <li>결별</li>
+                  <li>실패</li>
+                  <li>비도오고 그래서...</li>
+                </ul>
+              </article>
+              <div class="album-info">
+                <p class="title">{{song.title}}</p>
+                <p class="artist">{{song.artist}}</p>
+                <form action="{{ url_for('like', song_id=song.id ) }}" method="POST">
+                  <span class="like">{{song.count}}
+                    <button type="submit"></button>
+                  </span>
+                </form>
+                <p class="info-cont">{{song.music_content}}</p>
+              </div>
             </div>
           </div>
-          <div class="right">
-            <article class="article-wrap">
-              <p class="status">
-                현재 <span class="num">18</span>명이
-                <span class="emotion point-color">결별</span>로 같은 감정을
-                느껴요!
-              </p>
-              <ul class="tag-list">
-                <li>슬픔</li>
-                <li>결별</li>
-                <li>실패</li>
-                <li>비도오고 그래서...</li>
-              </ul>
-            </article>
-            <div class="album-info">
-              <p class="title">{{song.title}}</p>
-              <div class="dis-flx">
-                <p class="artist">{{song.artist}}</p>
-                <span class="like">293</span>
-              </div>
-              <p class="info-cont">{{song.music_content}}</p>
-            </div>
-            <!-- 한줄감상평 -->
-            <div class="comment-wrap">
+          <!-- 한줄감상평 -->
+          <div class="comment-wrap">
+            <form action="{{url_for('review_create', song_id = song.id)}}" method="POST">
               <h3 class="tit">한줄 감상평</h3>
-              <form action="{{url_for('review_create', song_id = song.id)}}" method="POST">
-                <div class="input-form">
-                  <label for="comment">
-                    <input type="text" name="review_content" placeholder="당신의 한줄 감상평을 입력해주세요.">
-                  </label>
-                  <button type="submit">입력</button>
-                </div>
-              </form>
-            </div>
-            <div>
+              <div class="input-form">
+                <label for="comment">
+                  <input type="text" name="review_content" placeholder="당신의 한줄 감상평을 입력해주세요. (30자 이내)" maxlength="30">
+                </label>
+                <button type="submit">입력</button>
+              </div>
+            </form>
+            <ul class="comment-list-wrap">
               {% for review in review %}
-              <p>{{review.review_content}}</p>
-              <p>{{review.date}}</p>
+              <li class="item">
+                <p>{{review.review_content}}</p>
+                <span class="date">{{review.date}}</span>
+              </li>
               {% endfor %}
-            </div>
+            </ul>
           </div>
           {% endfor %}
         </div>
