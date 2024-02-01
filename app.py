@@ -44,15 +44,17 @@ with app.app_context():
 def home():
     return render_template('intro.html')
 
-
 @app.route("/survey1/")
 def survey1():
     return render_template('survey1.html')
 
-
-@app.route("/seuvey2/")
+@app.route("/survey2/")
 def survey2():
     return render_template('survey2.html')
+
+@app.route("/survey3/")
+def survey3():
+    return render_template('survey3.html')
 
 
 @app.route("/music/")
@@ -64,10 +66,10 @@ def music():
 @app.route("/music/detail")
 def music_review():
     song_id = request.args.get('song_id')
-  # Song 테이블에서 title,artist,앨범 커버, 음원 가져오기
+    # Song 테이블에서 title,artist,앨범 커버, 음원 가져오기
     song_info = Song.query.filter_by(id=song_id).all()
 
-    # 저장된 리뷰들 가져오기
+    # 저장된 리뷰들 가져오기F
     reviews = Review.query.filter_by(song_id=song_id).all()
 
     return render_template('music_detail.html', song=song_info, review=reviews)
