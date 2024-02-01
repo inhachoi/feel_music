@@ -1,4 +1,10 @@
 /* common */
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
 /* font color */
 .point-color {
     color: #E2973F!important;
@@ -39,7 +45,7 @@
 
 .inner-wrap {
     max-width: 1156px;
-    padding: 0 15px;
+    padding: 0 15px 150px;
     margin: 0 auto;
 }
 .header {
@@ -77,6 +83,11 @@
     margin-bottom: 20px;
     font-size: 25px;
     font-weight: 500;
+}
+.inner-wrap + .footer {
+    position: relative;
+    bottom: auto;
+    padding-bottom: 30px;
 }
 
 /* 랜딩페이지 */
@@ -194,9 +205,6 @@
     grid-template-columns: repeat(6, minmax(100px, 1fr));
     gap: 40px 20px;
 }
-.recommend-music .music-list li .info {
-    margin-top: 10px;
-}
 .recommend-music .music-list li {
     transition: all .2s ease-in-out;
 }
@@ -206,6 +214,12 @@
 }
 .recommend-music .music-list li > a {
     width: 100%;
+}
+.recommend-music .music-list li .cover button {
+    width: 100%;
+}
+.recommend-music .music-list li .info {
+    margin-top: 10px;
 }
 .recommend-music .music-list li .info .title {
     overflow: hidden;
@@ -271,3 +285,20 @@
     }
 }
 
+@media(max-width: 900px) {
+    .recommend-music .music-list ul {
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+        gap: 40px 10px;
+    }
+}
+@media(max-width: 600px) {
+    .recommend-music .music-list ul {
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+}
+@media(max-width: 450px) {
+    .tit-wrap p + h2 {font-size: 25px;}
+    .recommend-music .music-list ul {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+}

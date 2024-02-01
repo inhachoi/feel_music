@@ -1,196 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>감정 딴따라</title>
-    <style>
-      @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
-
-      body {
-        background-color: #e2e2e2;
-      }
-
-      .background-banner {
-        background-color: #e2e2e2;
-        max-height: 100%;
-        background-position: center;
-        background-size: cover;
-        background-attachment: fixed;
-      }
-
-      .delete-btn {
-        background-color: red;
-        border-radius: 5px;
-        border: none;
-        width: 100%;
-        font-size: 13px;
-        height: 30px;
-      }
-
-      .delete-btn:hover {
-        background-color: pink;
-        color: black;
-      }
-
-      .footer {
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        font-weight: bold;
-        padding: 20px 0;
-      }
-
-      .ms-3 > h2 {
-        color: black;
-        font-weight: bold;
-      }
-
-      .ms-3 > h2 > span {
-        color: orange;
-      }
-
-      .background-banner > nav {
-        padding: 30px 30px 0px 30px;
-      }
-
-      .row-cols-1 {
-        padding-bottom: 100px;
-      }
-
-      #ment {
-        margin-left: 130px;
-        margin-top: 80px;
-      }
-
-      #ment > a {
-        text-decoration: none;
-        color: gray;
-        padding-left: 5px;
-      }
-
-      #ment > a:hover {
-        color: black;
-      }
-
-      #ment > h1 {
-        margin: 20px 0px 50px 0px;
-        color: black;
-      }
-
-      #ment > div {
-        margin-left: auto;
-        color: gray;
-        text-align: right;
-      }
-
-      span {
-        color: orange;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>감정 딴따라 | 음악추천 상세페이지</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      href="{{ url_for('static', filename='reset.css') }}"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
+      href="{{ url_for('static', filename='style.css') }}"
     />
   </head>
-
-  <body data-bs-theme="dark">
-    <div class="background-banner">
-      <nav
-        class="navbar d-flex justify-content-space-between"
-        data-bs-theme="dark"
-      >
-        <div class="ms-3">
-          <h2>감정 <span>딴</span>따라</h2>
-        </div>
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-black"
-                    aria-current="page"
-                    href="{{ url_for('home')}}"
-                    >Home</a
-                  >
-                </li>
-              </ul>
+  <style>
+    .music-detail {
+      display: flex;
+      gap: 0 20px;
+    }
+    .music-detail .left {
+      width: 100%;
+      max-width: 372px;
+    }
+    .music-detail .album-cover a {
+      width: 100%;
+    }
+    
+  </style>
+  <body>
+    <div id="wrap">
+      <div class="inner-wrap">
+        <!-- header -->
+        <header class="header">
+          <div class="logo">
+            <p>감정<span class="point-color">딴</span>따라</p>
+          </div>
+          <a href="{{ url_for('home')}}"
+            ><img src="{{ url_for('static', filename='home.svg') }}" alt=""
+          /></a>
+        </header>
+        <!-- 음악 추천 상세 -->
+        <div class="music-detail">
+          <!-- 음악정보 -->
+          {% for song in song %}
+          <div class="left">
+            <div class="album-cover">
+              <a href="{{song.video_url}}" class="play-btn">
+                <img src="{{song.image_url}}" alt="앨범커버">
+              </a>
             </div>
           </div>
-        </nav>
-      </nav>
-
-      <div id="ment" class="px-4 md-4 g-4 mx-auto w-75">
-        <div class="col-lg-6">
-          <p><br />현재 18명이 <span>결별</span>로 같은 감정을 느껴요!</p>
+          <div class="right">
+            <article class="article-wrap">
+              <p class="status">
+                현재 <span class="num">18</span>명이
+                <span class="emotion point-color">결별</span>로 같은 감정을
+                느껴요!
+              </p>
+              <ul class="tag-list">
+                <li>슬픔</li>
+                <li>결별</li>
+                <li>실패</li>
+                <li>비도오고 그래서...</li>
+              </ul>
+            </article>
+            <div class="album-info">
+              <p class="title">{{song.title}}</p>
+              <div class="dis-flx">
+                <p class="artist">{{song.artist}}</p>
+                <span class="like">293</span>
+              </div>
+              <p class="info-cont">{{song.music_content}}</p>
+            </div>
+            <!-- 한줄감상평 -->
+            <div class="comment-wrap">
+              <h3 class="tit">한줄 감상평</h3>
+              <form action="{{url_for('review_create', song_id = song.id)}}" method="POST">
+                <div class="input-form">
+                  <label for="comment">
+                    <input type="text" name="review_content" placeholder="당신의 한줄 감상평을 입력해주세요.">
+                  </label>
+                  <button type="submit">입력</button>
+                </div>
+              </form>
+            </div>
+            <div>
+              {% for review in review %}
+              <p>{{review.review_content}}</p>
+              <p>{{review.date}}</p>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
-      <!-- 음악 정보 내용 -->
-      {% for song in song %}
-      <div class="info">
-        <p class="title">{{song.title}}</p>
-        <p class="artist">{{song.artist}}</p>
-        <p class="artist">{{song.music_content}}</p>
-        <a href="{{song.video_url}}">
-          <img src="{{song.image_url}}" alt="앨범이미지" />
-        </a>
-      </div>
-      <!-- 한줄 감상평 -->
-      <form
-        action="{{url_for('review_create', song_id = song.id)}}"
-        method="POST"
-      >
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >한줄 감상평</label
-          >
-          <input type="hidden" name="song_id" value="{{song.id}}" />
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="당신의 한줄 감상평을 입력해주세요"
-            name="review_content"
-          />
-          <button type="submit" class="btn btn-primary">입력</button>
+
+      <div class="footer">
+        <div class="logo">
+          <p>감정</p>
+          <p><span class="point-color">딴</span>따라</p>
         </div>
-      </form>
-      {% endfor %}
-      <div>
-        {% for review in review %}
-        <p>{{review.review_content}}</p>
-        <p>{{review.date}}</p>
-        {% endfor %}
+        <p class="copy">music that you listen to according to your feelings</p>
       </div>
     </div>
-
-    <div class="footer">
-      <p>music that you listen to according to your feelings</p>
-    </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
