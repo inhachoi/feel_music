@@ -5,8 +5,9 @@
     height: 100vh;
 }
 #wrap.global-bg {
-    background: url('../static/global-bg.png')no-repeat center 100%;
+    background: url('../static/global-bg.png')no-repeat center;
     background-size: cover;
+    height: 100%;
 }
 /* font color */
 .point-color {
