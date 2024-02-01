@@ -498,6 +498,7 @@
     }
     .music-detail .music-wrap {
         flex-direction: column;
+        align-items: center;
     }
     .music-detail .music-wrap .music-info {
         margin-top: 40px;
