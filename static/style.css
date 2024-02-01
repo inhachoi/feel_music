@@ -425,6 +425,7 @@
     flex: 1;
   }
   .comment-list-wrap {
+    flex: 1;
     height: 200px;
     padding-right: 15px;
     overflow-y: scroll;
