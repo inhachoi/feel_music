@@ -105,7 +105,7 @@ def review_create():
             db.session.commit()
 
     # 리뷰 작성 후 리뷰 페이지로 리다이렉션
-    return redirect(url_for('music_review', song_id=song_id))
+    return redirect(url_for('music_detail', song_id=song_id))
 
 
 if __name__ == "__main__":
