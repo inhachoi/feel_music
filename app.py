@@ -92,12 +92,15 @@ def get_comment_count(song_id):
 def music():
     feeling = request.args.get('emotion_list')
     emotion = request.args.get('emotion')
+    feel_detail = request.args.get('feel_detail')
+    feeling_detail_cnt = request.args.get('feeling_detail_cnt')
+    print("feeling_detail_cnt>>>>>", feeling_detail_cnt)
 
     song_list = Song.query.filter_by(category=feeling).all()
     # 아직 수정 중
     song_id = request.args.get('song_id')
 
-    return render_template('music.html', data=song_list, get_comment_count=get_comment_count, emotion=emotion, feeling=feeling)
+    return render_template('music.html', data=song_list, get_comment_count=get_comment_count, emotion=emotion, feeling=feeling, feel_detail=feel_detail, feeling_detail_cnt=feeling_detail_cnt)
 
 
 @app.route("/music/detail")

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>감정 딴따라 | 현재 당신의 감정은?</title>
-    <link href="/static/tape.png" rel="shortcut icon" type="image/x-icon">
+    <link href="/static/tape.png" rel="shortcut icon" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='reset.css') }}"
@@ -48,11 +48,21 @@
           {% for feel_list in feel_list %} {% if feel_list.feeling ==
           emotion_list %}
           <form
-            action="{{url_for('music' ,  emotion = emotion, emotion_list = emotion_list ) }}"
+            action="{{url_for('music' ,  emotion = emotion, emotion_list = emotion_list , feel_detail = feel_detail,feeling_detail_cnt= feeling_detail_cnt) }}"
             method="GET"
           >
             <input type="hidden" name="emotion" value="{{emotion}}" />
             <input type="hidden" name="emotion_list" value="{{emotion_list}}" />
+            <input
+              type="hidden"
+              name="feel_detail"
+              value="{{feel_list.feeling_detail}}"
+            />
+            <input
+              type="hidden"
+              name="feeling_detail_cnt"
+              value="{{feel_list.feeling_detail_cnt}}"
+            />
             <button type="submit" class="btn">
               {{feel_list.feeling_detail}}
             </button>
