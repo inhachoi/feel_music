@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>감정 딴따라 | 음악추천 리스트</title>
+    <link href="/static/tape.png" rel="shortcut icon" type="image/x-icon">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='reset.css') }}"
@@ -12,6 +13,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+
   </head>
   <body>
     <div id="wrap" class="global-bg">
@@ -86,5 +88,6 @@
         <p class="copy">music that you listen to according to your feelings</p>
       </div>
     </div>
+    <script src="{{ url_for('static', filename='common.js') }}"></script>
   </body>
 </html>

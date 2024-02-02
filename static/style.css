@@ -2,7 +2,7 @@
 #wrap {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100vh;
 }
 #wrap.global-bg {
     background: url('../static/global-bg.png')no-repeat center;
@@ -194,9 +194,6 @@
     width: 20px;
     height: 20px;
     margin-bottom: 2px;
-}
-.recommend-music {
-    padding: 0 0 150px;
 }
 .recommend-music .music-list {
     margin-top: 80px;
@@ -496,6 +493,10 @@
 }
 
 @media(max-width: 900px) {
+    .inner-wrap {
+        padding: 0 15px 100px;
+    }
+    .recommend-music {padding-bottom: 50px;}
     .recommend-music .music-list ul {
         grid-template-columns: repeat(4, minmax(100px, 1fr));
         gap: 40px 10px;
@@ -536,7 +537,6 @@
     }
 }
 @media(max-width: 480px) {
-    .inner-wrap {padding: 0 15px 50px;}
     #wrap {
         height: auto;
     }
