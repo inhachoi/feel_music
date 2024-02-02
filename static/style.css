@@ -7,8 +7,7 @@
 #wrap.global-bg {
     background: url('../static/global-bg.png')no-repeat center;
     background-size: cover;
-    height: 100vh;
-    max-height: 1300px;
+    height: 100%;
 }
 /* font color */
 .point-color {
@@ -88,6 +87,10 @@
     margin-bottom: 20px;
     font-size: 25px;
     font-weight: 500;
+}
+.global-bg .footer {
+    position: relative;
+    padding-bottom: 20px;
 }
 
 /* 랜딩페이지 */
