@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>감정 딴따라 | 현재 당신의 감정은?</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <div id="wrap" class="global-bg">
-        <!-- 설문조사 step1 -->
-        <div class="survey-wrap">
-            <h2 class="tit">"현재 당신의 <span class="point-color">감정</span>을 선택해주세요."</h2>
-            <div class="select-btn btn-wrap">
-                <a href="{{ url_for('survey2')}}" class="btn bg-bk wide">슬픔</a>
-                <a href="{{ url_for('survey2')}}" class="btn bg-bk wide">행복</a>
-                <a href="{{ url_for('survey2')}}" class="btn bg-bk wide">분노</a>
-            </div>
+      <!-- 설문조사 step1 -->
+      <div class="survey-wrap">
+        <h2 class="tit">
+          "현재 당신의 <span class="point-color">감정</span>을 선택해주세요."
+        </h2>
+        <div class="select-btn btn-wrap">
+          <a
+            href="{{ url_for('survey2', emotion='슬픔')}}"
+            class="btn bg-bk wide"
+            >슬픔</a
+          >
+          <a
+            href="{{ url_for('survey2', emotion='행복')}}"
+            class="btn bg-bk wide"
+            >행복</a
+          >
+          <a
+            href="{{ url_for('survey2', emotion='분노')}}"
+            class="btn bg-bk wide"
+            >분노</a
+          >
         </div>
-        <!-- 푸터영역 -->
-        <div class="footer">
-            <div class="logo"><p>감정</p><p><span class="point-color">딴</span>따라</p></div>
-            <p class="copy">music that you listen to according to your feelings</p>
+      </div>
+      <!-- 푸터영역 -->
+      <div class="footer">
+        <div class="logo">
+          <p>감정</p>
+          <p><span class="point-color">딴</span>따라</p>
         </div>
+        <p class="copy">music that you listen to according to your feelings</p>
+      </div>
     </div>
-</body>
+  </body>
 </html>

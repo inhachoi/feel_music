@@ -52,32 +52,52 @@ def home():
     return render_template('intro.html')
 
 
+# 첫번쨰 감정
+emotions = ['슬픔', '행복', '분노']
+#
+feelings = {
+    "슬픔": ["우울", "미련", "좌절"],
+    "행복": ["설레임", "즐거움", "성취감"],
+    "분노": ["배신감", "불쾌감", "원망"]
+}
+
+
 @app.route("/survey1/")
 def survey1():
     return render_template('survey1.html')
 
 
-@app.route("/survey2/")
-def survey2():
-    return render_template('survey2.html')
+@app.route("/survey2/<emotion>")
+def survey2(emotion):
+    if (emotion == "슬픔"):
+        emotion_list = feelings.get(emotion, [])
+    elif (emotion == "행복"):
+        emotion_list = feelings.get(emotion, [])
+    else:
+        emotion_list = feelings.get(emotion, [])
+    return render_template('survey2.html', emotion_list=emotion_list, emotion=emotion)
 
 
-@app.route("/survey3/")
-def survey3():
-    return render_template('survey3.html')
+@app.route("/survey3/<emotion>/<emotion_list>")
+def survey3(emotion, emotion_list):
+    feel_list = Feel.query.all()
+    return render_template('survey3.html', emotion=emotion, emotion_list=emotion_list, feel_list=feel_list)
 
 
 def get_comment_count(song_id):
     return Review.query.filter_by(song_id=song_id).count()
 
 
-@app.route("/music/")
+@app.route("/music")
 def music():
-    song_list = Song.query.all()
+    feeling = request.args.get('emotion_list')
+    emotion = request.args.get('emotion')
+
+    song_list = Song.query.filter_by(category=feeling).all()
     # 아직 수정 중
     song_id = request.args.get('song_id')
 
-    return render_template('music.html', data=song_list, get_comment_count=get_comment_count)
+    return render_template('music.html', data=song_list, get_comment_count=get_comment_count, emotion=emotion, feeling=feeling)
 
 
 @app.route("/music/detail")
